@@ -1,23 +1,12 @@
-provider "aws" {
-  region = var.aws_region
-}
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.58.0"
-    }
-  }
+#   VPC
+resource "aws_vpc" "cicd-vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
 
-  # TF State Bucket
-  backend "s3" {
-    bucket  = "cicd-otf-state"
-    key     = "state/express.tfstate"
-    region  = "eu-central-1"
-    encrypt = true
-    # dynamodb_table = "mycomponents_tf_lockid"
+  tags = {
+    Name = "cicd-vpc"
   }
 }
-
 
