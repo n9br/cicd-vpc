@@ -14,7 +14,7 @@ terraform {
   # TF State Bucket
   backend "s3" {
     bucket  = "cicd-otf-state"
-    key     = "state/express.tfstate"
+    key     = "state/vpc.tfstate"
     region  = "eu-central-1"
     encrypt = true
     # dynamodb_table = "mycomponents_tf_lockid"
